@@ -21,7 +21,18 @@ Array.prototype.myMap = function(callbackFn) {
 
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
-  // Place your code here.
+  let pass_test = [];
+  let index = 0;
+  for (let i = 0; i < this.length; i++) 
+  { 
+    if (this[i] === undefined) continue;
+    if(callbackFn(this[i], i, this) == true)
+    {
+      pass_test[index] = this[i]; 
+      index++;
+    }
+  }
+  return pass_test;
 };
 
 // SOME //
