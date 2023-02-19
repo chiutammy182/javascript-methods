@@ -59,7 +59,15 @@ Array.prototype.myEvery = function(callbackFn) {
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
-  // Place your code here.
+  if (this.length === 0)
+    throw new Error("Error");
+  let value = this[0];
+  for (let i = 1; i < this.length; i++) 
+  {
+    if (this[i] === undefined) continue;
+    value = callbackFn(value, this[i], i, this);
+  }
+  return value;
 };
 
 // INCLUDES //
