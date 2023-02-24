@@ -106,7 +106,23 @@ Array.prototype.myLastIndexOf = function(searchElement) {
 
 // KEYS //
 Object.myKeys = function(object) {
-  // Place your code here.
+  let return_arr = [];
+  if(typeof(object)==='string')
+  {
+    for(let j = 0;j<object.length;j++)
+      return_arr[j] = String(j);
+    return return_arr;
+  }
+  if(typeof(object)!='object')
+    return return_arr;
+  let index = 0;
+  for (const prop in object) 
+  {
+    if(object.hasOwnProperty(prop))
+      return_arr[index] = prop;
+    index++;
+  }
+  return return_arr;
 };
 
 // VALUES //
