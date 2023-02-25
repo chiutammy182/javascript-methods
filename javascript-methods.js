@@ -118,8 +118,11 @@ Object.myKeys = function(object) {
   let index = 0;
   for (const prop in object) 
   {
-    if(object.hasOwnProperty(prop))
-      return_arr[index] = prop;
+    // if the object is an array, the for..in inherits the array prototypes 
+    if(prop==='myMap' || prop==='myFilter' || prop==='mySome' || prop==='myEvery' || 
+    prop==='myReduce' || prop==='myIncludes' || prop==='myIndexOf' || prop==='myLastIndexOf' || prop ==='myValues')
+      continue;
+    return_arr[index] = prop;
     index++;
   }
   return return_arr;
