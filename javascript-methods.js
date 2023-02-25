@@ -60,7 +60,7 @@ Array.prototype.myEvery = function(callbackFn) {
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
   if (this.length === 0)
-    throw new Error("Error");
+    throw new TypeError("myReduce of empty array with no initial value");
   let value = this[0];
   for (let i = 1; i < this.length; i++) 
   {
@@ -130,5 +130,24 @@ Object.myKeys = function(object) {
 
 // VALUES //
 Object.myValues = function(object) {
-  // Place your code here.
+  let return_arr = [];
+  if(typeof(object)==='string')
+  {
+    for(let j = 0;j<object.length;j++)
+      return_arr[j] = object[j];
+    return return_arr;
+  }
+  if(typeof(object)!='object')
+    return return_arr;
+  let index = 0;
+  for (const prop in object) 
+  {
+    // if the object is an array, the for..in inherits the array prototypes 
+    if(prop==='myMap' || prop==='myFilter' || prop==='mySome' || prop==='myEvery' || 
+    prop==='myReduce' || prop==='myIncludes' || prop==='myIndexOf' || prop==='myLastIndexOf' || prop ==='myKeys')
+      continue;
+    return_arr[index] = object[prop];
+    index++;
+  }
+  return return_arr;
 };
