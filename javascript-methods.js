@@ -107,18 +107,10 @@ Array.prototype.myLastIndexOf = function(searchElement) {
 // KEYS //
 Object.myKeys = function(object) {
   let return_arr = [];
-  if(typeof(object)==='string')
-  {
-    for(let j = 0;j<object.length;j++)
-      return_arr[j] = String(j);
-    return return_arr;
-  }
-  if(typeof(object)!='object')
-    return return_arr;
   let index = 0;
   for (const prop in object) 
   {
-    // if the object is an array, the for..in inherits the array prototypes 
+    //if the object is an array, the for..in inherits the array prototypes 
     if(prop==='myMap' || prop==='myFilter' || prop==='mySome' || prop==='myEvery' || 
     prop==='myReduce' || prop==='myIncludes' || prop==='myIndexOf' || prop==='myLastIndexOf' || prop ==='myValues')
       continue;
@@ -131,14 +123,6 @@ Object.myKeys = function(object) {
 // VALUES //
 Object.myValues = function(object) {
   let return_arr = [];
-  if(typeof(object)==='string')
-  {
-    for(let j = 0;j<object.length;j++)
-      return_arr[j] = object[j];
-    return return_arr;
-  }
-  if(typeof(object)!='object')
-    return return_arr;
   let index = 0;
   for (const prop in object) 
   {
