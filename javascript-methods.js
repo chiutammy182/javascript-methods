@@ -11,7 +11,8 @@ In this Assignment, we use the prototype constructor to add new methods to the A
 // MAP //
 Array.prototype.myMap = function(callbackFn) {
   let new_array = [];
-  for (let i = 0; i < this.length; i++) 
+  let len = this.length;
+  for (let i = 0; i < len; i++) 
   { 
     if (this[i] === undefined) continue;
     new_array[i] = callbackFn(this[i], i, this); 
@@ -22,11 +23,12 @@ Array.prototype.myMap = function(callbackFn) {
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
   let pass_test = [];
-  let index = 0;
-  for (let i = 0; i < this.length; i++) 
+  let index = 0;   // if the array is modified
+  let len = this.length;
+  for (let i = 0; i < len; i++) 
   { 
     if (this[i] === undefined) continue;
-    if(callbackFn(this[i], i, this) == true)
+    if(callbackFn(this[i], i, this) === true)
     {
       pass_test[index] = this[i]; 
       index++;
@@ -37,10 +39,11 @@ Array.prototype.myFilter = function(callbackFn) {
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-  for (let i = 0; i < this.length; i++) 
+  let len = this.length;
+  for (let i = 0; i < len; i++) 
   {
     if (this[i] === undefined) continue;
-    if(callbackFn(this[i],i, this)==true)
+    if(callbackFn(this[i], i, this) === true)
       return true; 
   }
   return false;
@@ -48,10 +51,11 @@ Array.prototype.mySome = function(callbackFn) {
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-  for (let i = 0; i < this.length; i++) 
+  let len = this.length;
+  for (let i = 0; i < len; i++) 
   {
     if (this[i] === undefined) continue;
-    if(callbackFn(this[i],i, this)==false)
+    if(callbackFn(this[i], i, this) === false)
       return false; 
   }
   return true;
@@ -62,7 +66,8 @@ Array.prototype.myReduce = function(callbackFn) {
   if (this.length === 0)
     throw new TypeError("myReduce of empty array with no initial value");
   let value = this[0];
-  for (let i = 1; i < this.length; i++) 
+  let len = this.length;
+  for (let i = 1; i < len; i++) 
   {
     if (this[i] === undefined) continue;
     value = callbackFn(value, this[i], i, this);
